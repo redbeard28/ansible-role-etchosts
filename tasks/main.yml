@@ -1,0 +1,6 @@
+---
+- name: "{{ ansible_distribution | lower }} | {{ ansible_distribution_release }} - Insert server and IP in /etc/hosts based on inventory"
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^{{ ansible_default_ipv4.address }}'
+    line: "{{ ansible_default_ipv4.address }}    {{ inventory_hostname }} {{ ansible_hostname }}"
